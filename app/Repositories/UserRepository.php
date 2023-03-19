@@ -31,7 +31,8 @@ class UserRepository implements UserInterface
   public function update($id, $data)
   {
     $user = User::where('id', $id)->first();
-    return $user->update($data);
+    $user->update($data);
+    return $user;
   }
 
   public function delete($id)
@@ -39,6 +40,6 @@ class UserRepository implements UserInterface
     $user = User::where('id', $id)->first();
 
     $user->delete();
-    return $user;
+    return response()->noContent();
   }
 }
